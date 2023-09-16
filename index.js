@@ -75,11 +75,25 @@ function showMovies(movies) {
   `;
   movieList.forEach((movie) => {
     let { title, poster_path, id, release_date, vote_average } = movie;
-
     let releaseDate = release_date.slice(0, 4);
 
+    // creating moviecard
     let movieCard = document.createElement("div");
     movieCard.classList.add("movie");
+
+    // creating heart-div
+    let heartDiv = document.createElement("div");
+    heartDiv.classList.add("heart-div");
+    // creating image
+    let heartImage = document.createElement("img");
+    heartImage.classList.add("heart");
+    heartImage.src = "images/heartclear.png";
+    heartImage.onclick = function (e) {
+      e.stopPropagation();
+      heartDiv.classList.toggle("redColor");
+    };
+    heartDiv.classList.add("heart-div");
+
     movieCard.innerHTML = `<a onclick="movieSelected('${id}')" href=#>
       <div class="movie-img-div">
         <img src="${IMG_URL + poster_path}" alt="movie poster">
@@ -101,25 +115,31 @@ function showMovies(movies) {
               </div>
             </div>
       </div>
-      <div class="heart-div ">
-        <img class="heart "
-        src="images/heartclear.png"
-        onclick='changeIcon()' />
-      </div>
+      
     </div>`;
 
+    heartDiv.append(heartImage);
+    movieCard.append(heartDiv);
     movieContainer.append(movieCard);
   });
 }
-
-let heartDiv = document.querySelector(".heart-div");
-
-function changeIcon() {
-  heartDiv.classList.toggle("blue");
-  console.log(heartDiv.classList);
+{
+  /* <div class="heart-div ">
+        <img class="heart "
+        src="images/heartclear.png"
+         />
+      </div> */
 }
-console.log(heartDiv);
-// let heartDiv;
+
+// let heartDiv = document.querySelector(".heart-div");
+
+function changeIcon(e) {
+  console.log("i work");
+  console.log(e);
+  // heartDiv.classList.toggle("blue");
+  // console.log(heartDiv.classList);
+}
+// console.log( ;
 
 //SEARCHING FOR MOVIES
 // let searchBar = document.getElementById("search-bar");

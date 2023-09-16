@@ -24,7 +24,8 @@ function getMovie() {
         movieHero.innerHTML = "<h2 class='err-mess'>Movie not found</h2>";
       }
       if (response.status == 200) {
-        movieContainer.innerHTML = "<h2 class='err-mess'>Loading...</h2>";
+        movieContainer.innerHTML =
+          "<h2 class='err-mess'  style='margin: 200px 400px; font-size: 3rem'>Loading...</h2>";
       }
       return response.json();
     })
