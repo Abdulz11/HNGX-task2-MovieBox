@@ -94,7 +94,7 @@ function showMovies(movies) {
     };
     heartDiv.classList.add("heart-div");
 
-    movieCard.innerHTML = `<a onclick="movieSelected('${id}')" href=#>
+    movieCard.innerHTML = `<a onclick="movieSelected('${id}')" >
       <div class="movie-img-div">
         <img src="${IMG_URL + poster_path}" alt="movie poster">
       <div>
