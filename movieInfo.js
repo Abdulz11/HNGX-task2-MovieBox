@@ -32,9 +32,9 @@ function getMovie() {
     })
     .catch((err) => console.log(err));
 }
-let actors;
-let directors;
-let writers;
+let actors = "";
+let directors = "";
+let writers = "";
 function getCast(data) {
   directors = data.crew
     .filter((crew) => crew.known_for_department == "Directing")
