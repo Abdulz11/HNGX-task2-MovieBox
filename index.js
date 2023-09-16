@@ -94,7 +94,7 @@ function showMovies(movies) {
     };
     heartDiv.classList.add("heart-div");
 
-    movieCard.innerHTML = `<a onclick="movieSelected('${id}')" >
+    movieCard.innerHTML = `<a onclick="movieSelected('${id}')" href=#>
       <div class="movie-img-div">
         <img src="${IMG_URL + poster_path}" alt="movie poster">
       <div>
@@ -126,9 +126,58 @@ function showMovies(movies) {
 {
 }
 
+//SEARCHING FOR MOVIES
+// let searchBar = document.getElementById("search-bar");
+// let searchButton = document.getElementById("search-btn");
+// searchButton.addEventListener("click", findMovies);
+
+// let searchParam =
+//   BASE_URL + "/search/movie?language=en-US&" + API_KEY + "&query=";
+
+// function findMovies(e) {
+//   let movieName = searchBar.value.trim();
+//   e.preventDefault();
+//   if (movieName) {
+//     getMovies(searchParam + movieName + "");
+//   } else if (movieName == "") {
+//     getMovies(searchPopular);
+//   }
+//   movieHeader.innerHTML = `'${searchBar.value}' Movies`;
+//   searchBar.value = " ";
+// }
+
+// GETTING INDIVIDUAL MOVIE INFO
 function movieSelected(id) {
+  // let movieInfoHeader = movieHeader.textContent;
   sessionStorage.setItem("movieId", id);
   console.log(id);
-  sessionStorage.setItem("movieHeader", movieInfoHeader);
+  // sessionStorage.setItem("movieHeader", movieInfoHeader);
   window.location = "movieInfo.html";
+}
+
+// links to sidebar
+let popular = document.getElementById("popular");
+let newRelease = document.getElementById("new");
+let highestRated = document.getElementById("rated");
+
+// POPULAR MOVIES
+// popular.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   navLinks("/discover/movie?sort_by=popularity.desc&", "Most Popular");
+// });
+// // NEW MOVIES
+// newRelease.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   navLinks("/movie/upcoming?", "New Release");
+// });
+// // HIGH RATING MOVIES
+// highestRated.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   navLinks("/movie/top_rated?language=en-US&", "Highest Rated");
+// });
+
+function navLinks(category, header) {
+  getMovies(BASE_URL + category + API_KEY + "&language=en-US");
+  movieHeader.innerHTML = header;
+  closeNav();
 }
