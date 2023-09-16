@@ -3,15 +3,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="index.css" />
     <title>MovieBox</title>
   </head>
   <div class="container">
     <nav>
       <div class="navbar">
-        <img  class="main-logo" src='images/tv.png'>
-        <h2>MovieBox</h2>
+        <div class=flex-hor style="gap: 15px;">
+          <img  class="main-logo" src='images/tv.png'>
+          <h2>MovieBox</h2>
+        </div>
         <form>
           <input
             type="text"
@@ -21,7 +22,7 @@
         </form>
         <div class="profile">
           <h4>Sign in</h4>
-         <img src="images/" alt="">
+         <img class="logos" src="images/Menu.png" alt="">
         </div>
       </div>
     </nav>
@@ -49,24 +50,36 @@
     </section>
 
     <section>
-      <div class="flex-hor">
-        <h2>Featured Movie</h2>
-        <p>See more ></p>
+      <div class="flex-hor" style="padding: 30px 50px">
+        <h2 style="font-size: 40px">Featured Movie</h2>
+        <p style="color: rgb(247, 40, 75);font-weight: 600">See more ></p>
       </div>
       <div class="movie-container" id="movie-container">
         <div class="movie">
-          <div>
-            <img src="/alexander-popov-UUJzCuHUfYI-unsplash.jpg" alt="" />
+          <div class="movie-img-div">
+            <img class="movie-poster" src="images/alexander-popov-UUJzCuHUfYI-unsplash.jpg" alt="movie poster">
+            
           </div>
           <div class="movie-short-info">
             <p>Usa 2018</p>
             <h3 class="title">Movie Title</h3>
             <div class="flex-hor">
-              <p>84/100</p>
-              <p>84%</p>
+              <div class="flex-hor">
+                <img src="images/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@ 1.png" alt="">
+                <p>84/100</p>
+              </div>
+              <div>
+                <img src="images/Rotten Tomatoes.png" alt="">
+                <p>84%</p>
+              </div>
             </div>
             <div>
               <p>Animation,Adventure</p>
+              <!-- <div class="heart-div" >
+                <img class='heart'
+                src="images/heartclear.png" onclick="changeIcon()" />
+              </div> -->
+              
             </div>
           </div>
         </div>
@@ -76,9 +89,7 @@
   <footer>
     <divc class="socials"></div>
       <div class="flex-hor">
-        <p>Condtions and use</p>
-        <p>Privacy and policy</p>
-        <p>Press room</p>
+       <img style='width: 40%;margin: 0 auto 20px;' src="images/Footer.png" alt="">
       </div>
   </footer>
   <body>

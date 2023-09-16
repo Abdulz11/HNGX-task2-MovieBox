@@ -6,41 +6,77 @@ const IMG_URL = "https://image.tmdb.org/t/p/w1280";
 //EACH MOVIE
 let outerContainer = document.querySelector(".outer");
 let eachMovieContainer = document.getElementById("eachMovie-container");
+let movieContainer = document.querySelector(".movie-info-cont");
 
 function getMovie() {
   let movieId = sessionStorage.getItem("movieId");
+  fetch(BASE_URL + "/movie/" + movieId + "/credits?" + API_KEY)
+    .then((response) => response.json())
+    .then((data) => {
+      getCast(data);
+    });
   // console.log(movieId);
   // let header = sessionStorage.getItem("movieHeader");
   // console.log(header);
   fetch(BASE_URL + "/movie/" + movieId + "?" + API_KEY)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status == 404) {
+        movieHero.innerHTML = "<h2 class='err-mess'>Movie not found</h2>";
+      }
+      if (response.status == 200) {
+        movieContainer.innerHTML = "<h2 class='err-mess'>Loading...</h2>";
+      }
+      return response.json();
+    })
     .then((data) => {
       showMovieInfo(data);
-      console.log(data);
-    });
+    })
+    .catch((err) => console.log(err));
+}
+let actors;
+let directors;
+let writers;
+function getCast(data) {
+  directors = data.crew
+    .filter((crew) => crew.known_for_department == "Directing")
+    .map((each) => each.name)
+    .toString();
+  writers = data.crew
+    .filter((crew) => crew.known_for_department == "Writing")
+    .map((each) => each.name)
+    .toString();
+
+  actors = data.cast
+    .splice(0, 5)
+    .map((cast) => cast.name)
+    .toString();
 }
 
 function showMovieInfo(movieInfo) {
   let {
-    imdb_id,
+    genres,
     overview,
     title,
     poster_path,
     backdrop_path,
-    tagline,
     vote_average,
     release_date,
     runtime,
   } = movieInfo;
+  // console.log(credits);
   // let genre =
   //   movieInfo.genres[0].name.charAt(0).toUpperCase() +
   //   movieInfo.genres[0].name.slice(1);
   // eachMovieContainer.innerHTML = "";
-  let movieContainer = document.querySelector(".movie-info-cont");
+  let genre = genres.map((item) => item.name).toString();
+  let date = release_date.slice(0, 4);
+
   movieContainer.innerHTML = `
-<div class="hero-video">
-  <img src="${IMG_URL + backdrop_path}" alt='movie-img'>
-  <div class='over-view'>
+<div class="hero-video" ">
+  <img  style="border-radius: 20px;" src="${
+    IMG_URL + backdrop_path
+  }" alt='movie-img'>
+  <div class='over-view' style="border-radius: 20px";>
     <img style="width: 70px; height: 70px;cursor: pointer;background-color: grey;border-radius: 50%;padding: 10px" src='images/Play.png'>
     <h2 style="color: white">Watch Trailer</h2>
   </div>
@@ -49,11 +85,11 @@ function showMovieInfo(movieInfo) {
   <div class="flex-hor moviepage-info info">
     <p>${title}</p>
     <p>.</p>
-    <p>Tom cruise</p>
+    <p>${date}</p>
     <p>.</p>
-    <p>${runtime}</p>
+    <p>${runtime}m</p>
     <p>.</p>
-    <p>ACTION</p>
+    <p>${genre}</p>
   </div>
   <div class="moviepage-info flex-hor">
     <img src="images/Star.png" />
@@ -66,16 +102,16 @@ function showMovieInfo(movieInfo) {
       ${overview}
     </p>
     <div>
-      <p>Cast:</p>
-      <p class="red">tom cruise</p>
+      <p>Actors:</p>
+      <p class="red">${actors}</p>
     </div>
     <div>
-      <p>Cast:</p>
-      <p class="red">tom cruise</p>
+      <p>Director:</p>
+      <p class="red">${directors}</p>
     </div>
     <div>
-      <p>Cast:</p>
-      <p class="red">tom cruise</p>
+      <p>Writers:</p>
+      <p class="red">${writers}</p>
     </div>
     <div>
       <img class='mt'src='images/Group 52 (1).png'>
