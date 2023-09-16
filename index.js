@@ -125,3 +125,10 @@ function showMovies(movies) {
 }
 {
 }
+
+function movieSelected(id) {
+  sessionStorage.setItem("movieId", id);
+  console.log(id);
+  sessionStorage.setItem("movieHeader", movieInfoHeader);
+  window.location = "movieInfo.html";
+}
