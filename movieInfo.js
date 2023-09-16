@@ -56,17 +56,12 @@ function showMovieInfo(movieInfo) {
     genres,
     overview,
     title,
-    poster_path,
     backdrop_path,
     vote_average,
     release_date,
     runtime,
   } = movieInfo;
-  // console.log(credits);
-  // let genre =
-  //   movieInfo.genres[0].name.charAt(0).toUpperCase() +
-  //   movieInfo.genres[0].name.slice(1);
-  // eachMovieContainer.innerHTML = "";
+
   let genre = genres.map((item) => item.name).toString();
   let date = release_date.slice(0, 4);
 
