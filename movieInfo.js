@@ -15,9 +15,7 @@ function getMovie() {
     .then((data) => {
       getCast(data);
     });
-  // console.log(movieId);
-  // let header = sessionStorage.getItem("movieHeader");
-  // console.log(header);
+
   fetch(BASE_URL + "/movie/" + movieId + "?" + API_KEY)
     .then((response) => {
       if (response.status == 404) {
