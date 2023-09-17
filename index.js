@@ -93,30 +93,35 @@ function showMovies(movies) {
       heartDiv.classList.toggle("redColor");
     };
     heartDiv.classList.add("heart-div");
+    movieCard.setAttribute("data-testid:", "movie-card");
 
-    movieCard.innerHTML = `<a onclick="movieSelected('${id}')" href=#>
+    movieCard.innerHTML = `
+    <div data-testid: movie-card>
+    <a onclick="movieSelected('${id}')" href=#>
       <div class="movie-img-div">
-        <img src="${IMG_URL + poster_path}" alt="movie poster">
+        <img src="${
+          IMG_URL + poster_path
+        }" alt="movie poster" data-testid:movie-poster>
       <div>
     </a>
-    <div class="movie-short-info">
-      <p style="color: grey;font-weight: 600;padding: 8px 0">${releaseDate}</p>
-      <h3 class="title">${title}
-      </h3>
-    
-      <div class="flex-hor">
-              <div class="flex-hor-gap">
-                <img class='logos'  src="images/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@ 1.png" alt="">
-                <p style="font-weight: 600">${vote_average}</p>
-              </div>
-              <div class="flex-hor-gap">
-                <img class='logos' src="images/PngItem_1381056 1.png" alt="">
-                <p style="font-weight: 600">84%</p>
-              </div>
-            </div>
+      <div class="movie-short-info">
+        <p style="color: grey;font-weight: 600;padding: 8px 0" data-testid:movie-release-date>${releaseDate}</p>
+        <h3 class="title" data-testid:movie-title>${title}
+        </h3>
+        <div class="flex-hor">
+          <div class="flex-hor-gap">
+            <img class='logos'  src="images/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@ 1.png" alt="">
+            <p style="font-weight: 600">${vote_average}</p>
+          </div>
+          <div class="flex-hor-gap">
+            <img class='logos' src="images/PngItem_1381056 1.png" alt="">
+            <p style="font-weight: 600">84%</p>
+          </div>
+        </div>
       </div>
-      
-    </div>`;
+    </div>
+   
+    `;
 
     heartDiv.append(heartImage);
     movieCard.append(heartDiv);

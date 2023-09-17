@@ -77,11 +77,11 @@ function showMovieInfo(movieInfo) {
 </div>
 <div class="movie-id-info flex-hor">
   <div class="flex-hor moviepage-info info">
-    <p>${title}</p>
+    <p data-testid: movie-title>${title}</p>
     <p>.</p>
-    <p>${date}</p>
+    <p data-testid: movie-release-date>${date}</p>
     <p>.</p>
-    <p>${runtime}m</p>
+    <p data-testid: movie-runtime>${runtime}m</p>
     <p>.</p>
     <p>${genre}</p>
   </div>
@@ -92,7 +92,7 @@ function showMovieInfo(movieInfo) {
 </div>
 <div class="grid">
   <div>
-    <p>
+    <p data-testid: movie-overview>
       ${overview}
     </p>
     <div>
