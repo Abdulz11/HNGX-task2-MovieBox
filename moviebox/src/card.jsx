@@ -11,7 +11,7 @@ export default function Card(props) {
     <>
       {" "}
       <div className='movie' data-testid:movie-card>
-        <Link to={`${props.props.id}`}>
+        <Link to={`movie/${props.props.id}`}>
           <div className='movie-img-div'>
             <img
               src={IMG_URL + props.props.poster_path}

@@ -66,7 +66,7 @@ export default function Home() {
             <p className='synopsis' style={{ color: "white" }}>
               {mainMovie[0].overview}
             </p>
-            <Link to={`${mainMovie[0].id}`}>
+            <Link to={`movie/${mainMovie[0].id}`}>
               <button>WATCH TRAILER</button>
             </Link>
           </div>

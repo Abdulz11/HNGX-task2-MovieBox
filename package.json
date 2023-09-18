@@ -1,6 +1,10 @@
 {
+  "homepage": "https://abdulz11.github.io/HNGX-task2/",
   "dependencies": {
     "react-router": "^6.16.0",
     "react-router-dom": "^6.16.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
